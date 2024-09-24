@@ -1,0 +1,33 @@
+# Use an official OpenJDK runtime as a parent image:
+FROM ubuntu
+
+# Create a Volume:
+VOLUME ["/MySQL_files"]
+
+# Set the working directory in the container:
+WORKDIR /MySQL_files
+
+# Copy the JAR file into the container at /jar_files:
+#COPY /home/ubuntu/ga-integration-1.0.0.jar /jar_files1/ga-integration-1.0.0.jar
+COPY home/ /MySQL_files/home/
+#COPY root/ /MySQL_files/root/
+
+# Copy the remaining files from the parent directory of the Dockerfile into /jar_files:
+#COPY .. jar_files1/
+
+# Expose port 8080 to the outside world:
+EXPOSE 3306
+
+# Run the JAR file with the specified environment variables:
+ENTRYPOINT ["/bin/bash"]
+~
+
+
+My-SQL-DB-AMI-Testing
+
+http://sharedislinks.com/lbnN
+
+
+
+
+docker run -it --rm --link my-old-database:mysql mysql sh -c 'echo "[client]\n host=\"$MYSQL_PORT_3306_TCP_ADDR\"\n user=root\n password=\"$MYSQL_ENV_MYSQL_ROOT_PASSWORD\"" > my.cnf && exec mysqldump --defaults-file=my.cnf --databases done_deal_qa' > done_deal_qa.sql
