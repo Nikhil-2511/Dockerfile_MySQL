@@ -1,0 +1,10 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest  # GitHub free Ubuntu cloud runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run deployment script
+        run: echo "Your code is executing on free GitHub cloud runner!"
+test-workflow
